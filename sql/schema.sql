@@ -10,8 +10,8 @@ CREATE TABLE department (
 );
 
 CREATE TABLE roles (
-  job_title VARCHAR(100),  
   id INT NOT NULL,
+  job_title VARCHAR(100),  
   FOREIGN KEY (department_id)
   REFERENCES department(id)
   ON DELETE SET NULL
