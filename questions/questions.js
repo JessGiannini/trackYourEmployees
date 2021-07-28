@@ -18,7 +18,7 @@ const initQuestions = [
 
 //View All Departments needs a function to show database
 //Add department to the db
-const addADept = [
+const addDept = [
   {
     type: "input",
     message: "What is the name of the Department you would liket to add?",
