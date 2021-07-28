@@ -29,19 +29,19 @@ function promptUser() {
   inquirer.prompt(initQuestions).then((answers) => {
     answers = answers.welcome;
     if (answers === "View All Departments") {
-      viewDept();
+      viewDepts();
     } else if (answers === "Add a Department") {
-      addDept();
+      addDepts();
     } else if (answers === "View All Roles") {
       viewRoles();
     } else if (answers === "Add a Role") {
-      addRole();
+      addRoles();
     } else if (answers === "View All Employees") {
-      viewEmp();
+      viewEmps();
     } else if (answers === "Add an Employee") {
-      addEmp();
+      addEmps();
     } else if (answers === "Update an Employee") {
-      updateEmp();
+      updateEmps();
     } else {
       connection.end();
       return;
@@ -53,7 +53,7 @@ function promptUser() {
 
 //function for displaying department
 
-function viewDept() {
+function viewDepts() {
   connection
     .promise()
     .query("SELECT * FROM 'department'")
@@ -67,9 +67,9 @@ function viewDept() {
     });
 }
 
-function addDept() {
+function addDepts() {
   inquirer.prompt(addDept).then((answers) => {
-    answers = answer.addDeptName;
+    answers = answers.addDeptName;
     connection.query(
       `INSERT INTO department (dep_name) VALUES ('${answers}')`,
       (err, result, field) => {
@@ -87,7 +87,7 @@ function viewRoles() {
   connection
     .promise()
     .query(
-      "SELECT r.id, r.job_title FROM role r inner join department d on r.dep_name=d.id;"
+      "SELECT r.id, r.job_title r.salary, FROM role r inner join department d on r.dep_name=d.id;"
     )
     .then((rows) => {
       console.log("____________View All Roles____________");
@@ -95,6 +95,48 @@ function viewRoles() {
     })
     .catch((err) => {
       console.log("Error Can't View Roles", err);
+    });
+}
+
+function addRoles() {
+  connection
+    .promise()
+    .query("SELECT * FROM department")
+    .then((row) => {
+      var roleDeptChoices = rows[0];
+      for (var i = 0; i < roleDeptChoices.length; i++) {
+        addRole[2].choices.push(roleDeptChoices[i].dept_name);
+      }
+      inquirer
+        .prompt(addRole)
+        .then((answers) => {
+          var dept_name = answers.addRoleDept;
+          connection
+            .promise()
+            .query(`SELECT * FROM department WHERE name = '${dept_name}'`)
+            .then((rows) => {
+              let dept_id = rows[0][0].id;
+              connection.query(
+                `INSERT INTO role (job_title, salary, dept_id) VALUE ('${
+                  answers.addRoleName
+                }', ${Number(answers.addRoleSalary)}, ${dept_id})`,
+                (err) => {
+                  if (err) throw err;
+                  console.log("____________Role Added____________");
+                  promptUser();
+                }
+              );
+            })
+            .catch((err) => {
+              console.log("error", err);
+            });
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    })
+    .catch((err) => {
+      console.log("error", err);
     });
 }
 
