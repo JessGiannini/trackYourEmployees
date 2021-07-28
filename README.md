@@ -17,13 +17,13 @@ You’ll need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2) 
 
 ## Deployed Link
 
-- [See Live Site](https://github.com/JessGiannini/QuizMe)
+- [See Live Site](https://jessgiannini.github.io/trackYourEmployees/)
 
 ## Authors
 
 **Jessica Giannini**
 
-- [Link to Portfolio Site](https://jessgiannini.github.io/WebDeveloperPortfolio/)
+- [Link to Portfolio Site](https://jessgiannini.github.io/New-Web-Developer-Portfolio/)
 - [Link to Github](https://github.com/jessgiannini)
 - [Link to LinkedIn](https://www.linkedin.com/in/jessica-aletta-giannini-155b1310/)
 
