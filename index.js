@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
-const generateHTML = require("./utils/generateHTML.js");
+//const fs = require("fs");
+//const generateHTML = require("./utils/generateHTML.js");
+const mysql = require('mysql2');
+const cTable = require('console.table');
 
 
 function promptUser() {
