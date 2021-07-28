@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+function generateHTML(answers) {
+  var HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,4 +10,9 @@
 <body>
     
 </body>
-</html>
+</html>`;
+
+  return HTML;
+}
+
+module.exports = generateHTML;
