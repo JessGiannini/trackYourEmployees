@@ -36,13 +36,14 @@ const addRole = [
   },
   {
     type: "input",
-    message: "What is the salary for this role?",
+    message: "What is the salary for this Role?",
     name: "addRoleSalary",
   },
   {
-    type: "input",
-    message: "Which department would you like to add this role?",
+    type: "list",
+    message: "Which department would you like to add this Role?",
     name: "addRoleDept",
+    choices: [],
   },
 ];
 
@@ -58,5 +59,33 @@ const addEmp = [
     type: "input",
     message: "What is the last name of the Employee you would like to add?",
     name: "addEmpLastName",
+  },
+  {
+    type: "list",
+    message: "Which Role would you like to add this Employee?",
+    name: "addEmpRole",
+    choices: [],
+  },
+  {
+    type: "list",
+    message: "Which Manager will have this Employee?",
+    name: "addEmpManager",
+    choices: [],
+  },
+];
+
+//select an employee to update and their new role
+const updateEmp = [
+  {
+    type: "list",
+    message: "Which Employee would you like to update?",
+    name: "choseEmp",
+    choices: [],
+  },
+  {
+    type: "list",
+    message: "Which role would you like to give to this Employee?",
+    name: "updateEmpRole",
+    choices: [],
   },
 ];
