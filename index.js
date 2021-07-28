@@ -1,9 +1,7 @@
 const inquirer = require("inquirer");
-//const fs = require("fs");
-//const generateHTML = require("./utils/generateHTML.js");
 const mysql = require("mysql2");
 const cTable = require("console.table");
-const { ConnectionError } = require("./connection/connection");
+// const { ConnectionError } = require("./connection/connection");
 const {
   initQuestions,
   addDept,
@@ -46,8 +44,6 @@ function promptUser() {
       connection.end();
       return;
     }
-
-    //=> writeToFile("generateHTML", answers));
   });
 }
 
